@@ -25,6 +25,7 @@ export function renderPayementSummary(){
     cart.forEach((cartItem)=>{
         cartQuantity += cartItem.quantity;
     });
+
     
     const paymentSummaryHTML = `
         <div class="payment-summary-title">
@@ -60,6 +61,12 @@ export function renderPayementSummary(){
             Place your order
           </button>
     `;
+
+    document.querySelector('.js-return-to-home-link').innerHTML = `
+      <a class="return-to-home-link js-return-to-home-link"
+            href="amazon.html">${cartQuantity} items</a>
+    `
+
     
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
