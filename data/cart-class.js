@@ -1,7 +1,7 @@
 class Cart{
     cartItems;         //public property
     #localStorageKey;    //private property
-
+    
     constructor(localStorageKey){
         
         this.#localStorageKey = localStorageKey;
