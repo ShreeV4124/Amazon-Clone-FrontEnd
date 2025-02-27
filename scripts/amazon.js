@@ -2,6 +2,8 @@ import {cart, addToCart} from '../data/cart.js';
 import{products} from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
 import { renderPayementSummary } from './checkout/paymentSummary.js';
+import { prodFun } from './singleProduct.js';
+// import { prodFun } from './singleProduct.js';
 
 let productsHTML = '';
 let cartQuantity = 0;
@@ -20,19 +22,21 @@ products.forEach((product)=>{
                 <img class="product-image"
                 src="${product.image}">
             </div>
-
+                       
+            <a class="single-product" href="singleProduct.html">    
             <div class="product-name limit-text-to-2-lines">
                 ${product.name}
             </div>
-
-            <div class="product-rating-container">
-                <img class="product-rating-stars"
-                src="images/ratings/rating-${product.rating.stars*10}.png">
-                <div class="product-rating-count link-primary">
-                ${product.rating.count}
+            </a>
+ 
+                <div class="product-rating-container">
+                    <img class="product-rating-stars"
+                    src="images/ratings/rating-${product.rating.stars*10}.png">
+                    <div class="product-rating-count link-primary">
+                    ${product.rating.count}
+                    </div>
                 </div>
-            </div>
-
+            
             <div class="product-price">
                 $${formatCurrency(product.priceCents)}
             </div>
@@ -88,3 +92,11 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
         
     });
 });
+
+document.querySelectorAll('.single-product').forEach(()=>{
+    addEventListener('click',()=>{
+        const productId=button.dataset.productId;
+        prodFun(productId);
+    })
+})
+
