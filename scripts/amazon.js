@@ -2,7 +2,7 @@ import {cart, addToCart} from '../data/cart.js';
 import{products, loadProducts} from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
 import { renderPayementSummary } from './checkout/paymentSummary.js';
-import { prodFun } from './singleProduct.js';
+// import { renderSingleProduct } from './singleProduct.js';
 // import { prodFun } from './singleProduct.js';
 
 loadProducts(renderProductsGrid);
@@ -28,7 +28,7 @@ function renderProductsGrid(){
                 </div>
                         
                 <a class="single-product" href="singleProduct.html">    
-                <div class="product-name limit-text-to-2-lines">
+                <div class="product-name js-prod-name limit-text-to-2-lines">
                     ${product.name}
                 </div>
                 </a>
@@ -99,10 +99,12 @@ function renderProductsGrid(){
         });
     });
 
-    document.querySelectorAll('.single-product').forEach(()=>{
-        addEventListener('click',()=>{
-            const productId=button.dataset.productId;
-            prodFun(productId);
-        })
+    document.querySelectorAll('.single-product').forEach((itm) => {
+        itm.addEventListener('click', (event) => {
+            event.preventDefault();
+            const productId = itm.closest('.product-container').querySelector('.js-add-to-cart').dataset.productId;
+            window.location.href = `singleProduct.html?productId=${productId}`;
+        });
     });
+    
 }
