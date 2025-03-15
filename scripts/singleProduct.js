@@ -1,10 +1,13 @@
+
+
 import { products, getProduct, loadProducts } from "../data/products.js";
+import { cart, addToCart } from "../data/cart.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get("productId");
 
-    console.log("Extracted productId from URL:", productId);
+    console.log("Extracted productId from URL:", productId); // Debugging step
 
     if (!productId) {
         document.body.innerHTML = "<h2>Product not found</h2>";
@@ -14,15 +17,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Ensure products are loaded before accessing them
     await loadProducts(() => {
         const product = getProduct(productId);
+        console.log("Loaded product:", product); // Debugging step
 
-        // if (!product) {
-        //     document.body.innerHTML = "<h2>Product not found</h2>";
-        //     return;
-        // }
+        if (!product) {
+            document.body.innerHTML = "<h2>Product not found</h2>";
+            return;
+        }
 
         document.querySelector(".product-display").innerHTML = `
-
-
+            
             <div class="product-d-image">
           <div class="product-icons">
             <img src="${product.image}" alt="" width="60">
@@ -132,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             <option value="3">Quantity: 3</option>
           </select>
 
-          <button class="btn">Add to cart</button>
+          <button class="btn js-add-to-cart">Add to cart</button>
           <button class="btn product-buy">Buy Now</button>
 
           <div class="product-seller-info">
@@ -147,5 +150,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         </div>
         `;
+
+        // Add event listener for "Add to Cart" button
+        document.querySelector(".js-add-to-cart").addEventListener("click", () => {
+            addToCart(productId);
+            updateCartQuantity();
+            console.log("Product added to cart:", productId); // Debugging step
+        });
+
+        function updateCartQuantity() {
+            let cartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector(".js-cart-quantity").textContent = cartQuantity;
+            console.log("Updated cart quantity:", cartQuantity); // Debugging step
+        }
+
+        updateCartQuantity(); // Ensure cart updates on page load
     });
 });
