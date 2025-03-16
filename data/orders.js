@@ -23,7 +23,7 @@ function allOrders() {
       }
 
       codeHTML += `
-          <div class="product-container">
+          
               <div class="product-image-container">
                   <img src="${productDetails.image}">
               </div>
@@ -44,7 +44,7 @@ function allOrders() {
                       Track package
                   </button>
               </div>
-          </div>
+          
       `;
   });
 
