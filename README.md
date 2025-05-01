@@ -13,4 +13,4 @@ Frontend: HTML, CSS, JavaScript
 Storage: LocalStorage (for cart and orders)
 
 🌐 Deployed Link
-🔗 Live Demo Link : https://shreev4124.github.io/Amazon-Clone-/
+🔗 Live Demo Link : https://shreev4124.github.io/Amazon-Clone-FrontEnd/
