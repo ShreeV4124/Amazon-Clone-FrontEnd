@@ -14,3 +14,10 @@ Storage: LocalStorage (for cart and orders)
 
 🌐 Deployed Link
 🔗 Live Demo Link : https://shreev4124.github.io/Amazon-Clone-FrontEnd/
+
+
+https://github.com/user-attachments/assets/0b1b2a67-97b5-4516-9411-efc0a7da51d8
+## 🚀 Demo
+
+<video src="[https://github.com/user-attachments/assets/your-video-id](https://github.com/user-attachments/assets/0b1b2a67-97b5-4516-9411-efc0a7da51d8)" controls style="max-width: 100%; height: auto;">
+</video>
